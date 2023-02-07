@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
    <h1>Edit project# {{ $project->id }}</h1>
 
    @if ($errors->any())
@@ -28,9 +29,11 @@
 
       <label class="form-label">Cover image:</label>
       <input type="file" name="cover_img" class="form-control @error('cover_img') is-invalid @enderror">
-      <div>
-         <img src="{{ $project->cover_img }}" alt="" class="img-fluid">
-      </div>
+
+      @if ($project->cover_img)
+         <p class="form-text">Current image: </p>
+         <img src="{{ asset('storage/' . $project->cover_img) }}" alt="" class="img-thumbnail">
+      @endif
 
       <label class="form-label">Github link:</label>
       <input type="text" name="github_link" class="form-control @error('github_link') is-invalid @enderror"
