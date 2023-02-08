@@ -23,7 +23,7 @@ class ProjectsTableSeeder extends Seeder
 
             $project->name = $faker->name();
             $project->description = $faker->text();
-            $project->cover_img = $faker->imageUrl();
+            $project->cover_img = null;
             $project->github_link = $faker->url();
 
             $project->save();

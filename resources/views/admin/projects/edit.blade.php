@@ -27,6 +27,14 @@
       <textarea name="description" cols="30" rows="5"
          class="form-control @error('description') is-invalid @enderror">{{ old('description', $project->description) }}</textarea>
 
+      <label class="form-label">Category: </label>
+      <select type="select" class="form-select" name="type_id">
+         @foreach ($types as $type)
+            <option value="{{ $type->id }}" {{ $type->id === $project->type_id ? 'selected' : '' }}>{{ $type->name }}
+            </option>
+         @endforeach
+      </select>
+
       <label class="form-label">Cover image:</label>
       <input type="file" name="cover_img" class="form-control @error('cover_img') is-invalid @enderror">
 

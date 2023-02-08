@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProjectRequest;
 use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -32,7 +32,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -78,7 +80,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -97,12 +101,14 @@ class ProjectController extends Controller
 
             $path = Storage::put('uploaded', $data['cover_img']);
 
-            @dump($project->cover_img);
-
             if ($project->cover_img !== null) {
                 Storage::delete($project->cover_img);
             }
         }
+
+        // @dump($project);
+        // @dd($data);
+
 
         $project->update([
             ...$data,

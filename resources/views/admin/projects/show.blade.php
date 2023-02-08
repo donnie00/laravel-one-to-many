@@ -13,6 +13,9 @@
          <h4>Name: </h4>
          <p>{{ $project->name }}</p>
 
+         <h4>Type:</h4>
+         <p>{{ $project->type->name }}</p>
+
          <h4>Description: </h4>
          <p>{{ $project->description }}</p>
 
