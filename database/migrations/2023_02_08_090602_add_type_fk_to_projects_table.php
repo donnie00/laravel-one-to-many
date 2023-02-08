@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreign('type_id')
                 ->references('id')
-                ->on('type');
+                ->on('types');
         });
     }
 

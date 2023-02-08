@@ -51,6 +51,8 @@ class ProjectController extends Controller
             $path = Storage::put('uploaded', $data['cover_img']);
         }
 
+        // @dump($project);
+
         $project = new Project();
 
         $project->fill($data);
@@ -98,17 +100,12 @@ class ProjectController extends Controller
 
         if (key_exists('cover_img', $data)) {
 
-
             $path = Storage::put('uploaded', $data['cover_img']);
 
             if ($project->cover_img !== null) {
                 Storage::delete($project->cover_img);
             }
         }
-
-        // @dump($project);
-        // @dd($data);
-
 
         $project->update([
             ...$data,

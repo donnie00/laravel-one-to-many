@@ -19,6 +19,9 @@
                         <li>
                            <a href="{{ route('admin.projects.index') }}">Manage all projects</a>
                         </li>
+                        <li>
+                           <a href="{{ route('admin.types.index') }}">Manage types</a>
+                        </li>
                      </ul>
                   @endif
                </div>

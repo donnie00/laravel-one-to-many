@@ -26,7 +26,7 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'type_id' => 'required',
+            'type_id' => 'nullable|exists:types,id',
             'cover_img' => 'nullable|image',
             'github_link' => 'required|url'
         ];
